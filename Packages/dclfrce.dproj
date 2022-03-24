@@ -1,14 +1,14 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{B2DC8C5C-F584-4ECC-BD47-AA6AA0BA74B3}</ProjectGuid>
-        <MainSource>frce.dpk</MainSource>
+        <ProjectGuid>{6632D6CA-9990-4C48-A65C-3AE1E4D997A0}</ProjectGuid>
+        <MainSource>dclfrce.dpk</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <TargetedPlatforms>38019</TargetedPlatforms>
+        <TargetedPlatforms>169089</TargetedPlatforms>
         <AppType>Package</AppType>
-        <FrameworkType>VCL</FrameworkType>
+        <FrameworkType>None</FrameworkType>
         <ProjectVersion>19.4</ProjectVersion>
-        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -30,11 +30,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
         <Base_Win32>true</Base_Win32>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
-        <Base_Win64>true</Base_Win64>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
@@ -66,6 +61,12 @@
         <Cfg_2>true</Cfg_2>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='OSXARM64' and '$(Cfg_2)'=='true') or '$(Cfg_2_OSXARM64)'!=''">
+        <Cfg_2_OSXARM64>true</Cfg_2_OSXARM64>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
         <Cfg_2_Win32>true</Cfg_2_Win32>
         <CfgParent>Cfg_2</CfgParent>
@@ -81,16 +82,16 @@
         <DCC_ImageBase>00400000</DCC_ImageBase>
         <GenDll>true</GenDll>
         <GenPackage>true</GenPackage>
-        <SanitizedProjectName>frce</SanitizedProjectName>
+        <SanitizedProjectName>dclfrce</SanitizedProjectName>
         <DCC_DebugInformation>1</DCC_DebugInformation>
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-        <DCC_Description>Fortes Report Comunity Edition</DCC_Description>
+        <DCC_Description>Fortes Report Comunity Edition (design-time)</DCC_Description>
         <DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
         <DCC_Define>RELEASE;DELPHI;VCL;$(DCC_Define)</DCC_Define>
-        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;DUnitX.Loggers.GUI;Winapi;System.Win;$(DCC_Namespace)</DCC_Namespace>
-        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DesignOnlyPackage>true</DesignOnlyPackage>
+        <VerInfo_Locale>1046</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=;CFBundleName=</VerInfo_Keys>
-        <RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;$(DCC_Namespace)</DCC_Namespace>
         <DCC_DcpOutput>$(DPXWorkSpace)\Bin\$(Platform)\$(Config)\dcp</DCC_DcpOutput>
         <DCC_BplOutput>$(DPXWorkSpace)\Bin\$(Platform)\$(Config)\bpl</DCC_BplOutput>
         <DCC_UnitSearchPath>$(DPXWorkSpace)\Bin\$(Platform)\$(Config)\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
@@ -110,17 +111,11 @@
         <iOS_AppStore1024>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_1024x1024.png</iOS_AppStore1024>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
-        <BT_BuildType>Debug</BT_BuildType>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_DebugInformation>0</DCC_DebugInformation>
@@ -131,6 +126,8 @@
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
         <DCC_Optimize>false</DCC_Optimize>
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_RangeChecking>true</DCC_RangeChecking>
+        <DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android64)'!=''">
         <BT_BuildType>Debug</BT_BuildType>
@@ -141,52 +138,23 @@
     <PropertyGroup Condition="'$(Cfg_2_OSX64)'!=''">
         <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_OSXARM64)'!=''">
+        <BT_BuildType>Debug</BT_BuildType>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
-        <DCCReference Include="vcl.dcp"/>
-        <DCCReference Include="xmlrtl.dcp"/>
-        <DCCReference Include="vclactnband.dcp"/>
-        <DCCReference Include="vclx.dcp"/>
-        <DCCReference Include="dbrtl.dcp"/>
-        <DCCReference Include="vclimg.dcp"/>
-        <DCCReference Include="vcldb.dcp"/>
-        <DCCReference Include="..\Source\RLReport.pas"/>
-        <DCCReference Include="..\Source\RLUtils.pas"/>
-        <DCCReference Include="..\Source\RLPreviewForm.pas"/>
-        <DCCReference Include="..\Source\RLPreview.pas"/>
-        <DCCReference Include="..\Source\RLFeedBack.pas"/>
-        <DCCReference Include="..\Source\RLMetaFile.pas"/>
-        <DCCReference Include="..\Source\RLParser.pas"/>
-        <DCCReference Include="..\Source\RLConsts.pas"/>
-        <DCCReference Include="..\Source\RLTypes.pas"/>
-        <DCCReference Include="..\Source\RLFilters.pas"/>
-        <DCCReference Include="..\Source\RLPrintDialog.pas"/>
-        <DCCReference Include="..\Source\RLSaveDialog.pas"/>
-        <DCCReference Include="..\Source\RLPrinters.pas"/>
-        <DCCReference Include="..\Source\RLBarcode.pas"/>
-        <DCCReference Include="..\Source\RLDraftFilter.pas"/>
-        <DCCReference Include="..\Source\RLRichFilter.pas"/>
-        <DCCReference Include="..\Source\RLHTMLFilter.pas"/>
-        <DCCReference Include="..\Source\RLPDFFilter.pas"/>
-        <DCCReference Include="..\Source\RLRichText.pas"/>
-        <DCCReference Include="..\Source\RLSpoolFilter.pas"/>
-        <DCCReference Include="..\Source\RLMetaVCL.pas"/>
-        <DCCReference Include="..\Source\RLFindDialog.pas"/>
-        <DCCReference Include="..\Source\RLAbout.pas"/>
-        <DCCReference Include="..\Source\RlCompilerConsts.pas"/>
-        <DCCReference Include="..\Source\RLComponentFactory.pas"/>
-        <DCCReference Include="..\Source\RLCRC32.pas"/>
-        <DCCReference Include="..\Source\RLPkZip.pas"/>
-        <DCCReference Include="..\Source\RLXLSFilter.pas"/>
-        <DCCReference Include="..\Source\RLXLSXFileFormat.pas"/>
-        <DCCReference Include="..\Source\RLXLSXFilter.pas"/>
+        <DCCReference Include="frce.dcp"/>
+        <DCCReference Include="designide.dcp"/>
+        <DCCReference Include="..\Source\RLReg.pas"/>
+        <DCCReference Include="..\Source\RLDesign.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -205,7 +173,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">frce.dpk</Source>
+                    <Source Name="MainSource">dclfrce.dpk</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="C:\DPX\trunk\Bin\Win32\Debug\bpl\dclDPX_VCL.UI.bpl">(untitled)</Excluded_Packages>
@@ -220,8 +188,9 @@
                 <Platform value="iOSDevice64">True</Platform>
                 <Platform value="Linux64">True</Platform>
                 <Platform value="OSX64">True</Platform>
+                <Platform value="OSXARM64">True</Platform>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">True</Platform>
+                <Platform value="Win64">False</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
