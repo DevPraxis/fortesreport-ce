@@ -10,8 +10,16 @@ goto build
 
 call "C:\Program Files (x86)\Embarcadero\Studio\22.0\bin\rsvars.bat"
 
-MSBuild /t:%BuildTarget% /p:DCC_Hints=false;DCC_Warnings=false;config=%BuildConfig%;Platform=%TargetPlatform% "..\Packages\FortesReport.groupproj"
+MSBuild /t:%BuildTarget% /p:DCC_Hints=false;DCC_Warnings=false;config=%BuildConfig%;Platform=%TargetPlatform% "..\Packages\frce.dproj"
 if errorlevel=1 goto builderror
+
+
+if '%TargetPlatform%' == 'Win32' (	
+	if '%BuildConfig%' == 'debug' (  
+		MSBuild /t:%BuildTarget% /p:DCC_Hints=false;DCC_Warnings=false;config=%BuildConfig%;Platform=%TargetPlatform% "..\Packages\dclfrce.dproj"
+		if errorlevel=1 goto builderror  
+	)
+)
 
 goto buildfinish
 
